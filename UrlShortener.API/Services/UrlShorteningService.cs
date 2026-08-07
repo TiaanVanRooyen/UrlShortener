@@ -24,6 +24,14 @@ namespace UrlShortener.API.Services
 
         public async Task<string> ShortenUrlAsync(string longUrl)
         {
+            var existingUrl = await _context.Mapping
+                .FirstOrDefaultAsync(u => u.LongUrl == longUrl);
+
+            if (existingUrl != null)
+            {
+                return existingUrl.Code;
+            }
+
             string code;
             do
             {
