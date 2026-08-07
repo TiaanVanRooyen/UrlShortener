@@ -11,6 +11,9 @@ namespace UrlShortener.API.Data
             modelBuilder.Entity<UrlMapping>()
                 .HasIndex(u => u.Code)
                 .IsUnique();
+
+            modelBuilder.Entity<UrlMapping>()
+                .HasIndex(u => u.LongUrl);
         }
     }
 }
