@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using UrlShortener.API.Data;
+using UrlShortener.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IUrlShorteningService, UrlShorteningService>();
 
 builder.Services.AddDbContext<AppDbContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=./Data/urls.db"));
