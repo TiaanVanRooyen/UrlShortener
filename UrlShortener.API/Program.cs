@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using UrlShortener.API.Data;
+using UrlShortener.API.Endpoints;
 using UrlShortener.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,4 +18,6 @@ using (var scoped = app.Services.CreateScope())
     db.Database.EnsureCreated();
 }
 
-    app.Run();
+app.MapEnpoints();
+
+app.Run();
